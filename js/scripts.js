@@ -14,9 +14,10 @@ if (!user) {
     name: 'Guest',
     scoreHistory: {
       date: [],
-      score: [].unshift(0)
+      score: []
     }
   }
+  user.scoreHistory.score.unshift(0)
   localStorage.setItem('user', JSON.stringify(user))
 }
 
@@ -72,6 +73,7 @@ function startTest() {
       document.getElementById('info').innerText = "Test Completed!";
       document.getElementById('result').style.display = 'block';
       user.scoreHistory.date.push(new Date())
+      console.log(user.scoreHistory.score);
       user.scoreHistory.score.push(averageSpeedInKbps)
       localStorage.setItem('user', JSON.stringify(user))
       showLastResults(user)
